@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //import pages
 import IssueForm from "./pages/issueform";
 import LoginForm from "./pages/login";
-import ErrorPage from "./pages/error";
+// import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
 
 // router paths for site
