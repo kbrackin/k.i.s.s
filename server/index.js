@@ -14,13 +14,18 @@ app.use(express.json());
 // add routes for apis
 app.use(routes);
 
+//Mongo
+const db = require('./config/connection')
+
+
 // host public react
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
-// start express
-app.listen(process.env.PORT, () => {
-  console.log("App listening on port process.env.PORT");
-});
+// start express with mongoose
+db.once('open', () => {
+  app.listen(process.env.PORT, () => console.log(`Server is listening port ${process.env.PORT}`))
+})
+
