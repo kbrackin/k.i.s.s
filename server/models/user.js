@@ -26,7 +26,16 @@ const userSchema = new Schema({
         required: true,
         unique: false,
     },
-    issues: [issueSchema]
+    issues: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "issues",
+          },
+    
+    ]
+
+
+   
 
 })
 
