@@ -1,8 +1,14 @@
 const router = require("express").Router();
 
-const { putIssue, routeTest } = require("../../controllers/dbController.js");
+const {
+  putUser,
+  routeTest,
+  putIssue,
+} = require("../../controllers/dbController.js");
 
-router.route("/").post(putIssue).get(routeTest);
+router.route("/users").post(putUser).get(routeTest);
+
+router.route("/users/:userID").post(putIssue);
 
 router.route("/");
 
