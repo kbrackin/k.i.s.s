@@ -1,13 +1,17 @@
-import "../style.css";
+import React, { useState, useEffect } from "react";
 
-import { useState } from "react";
+import "../style.css";
 
 import toGPT from "../api/toGPT";
 import { getAdapter } from "axios";
 
 export default function Issue() {
   const [issueVal, setIssueVal] = useState("");
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    console.log("val added");
+  }, [issueVal]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +26,7 @@ export default function Issue() {
 
       gptRes = await toGPT(IssueGPT);
 
-      console.log(gptRes.data.response);
+      setResult(gptRes.data.response);
 
       // console.log(gptRes.data.response);
     };
@@ -49,6 +53,8 @@ export default function Issue() {
 
         <br></br>
         <button type="submit">Submit</button>
+
+        <p>{result}</p>
       </form>
     </div>
   );

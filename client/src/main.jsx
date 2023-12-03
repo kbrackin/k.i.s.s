@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //import pages
-import IssueForm from "./pages/issueform";
+import AIhelp from "./pages/issueform";
 import LoginForm from "./pages/login";
 // import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/issue",
-        element: <IssueForm />,
+        path: "/AIhelp",
+        element: <AIhelp />,
       },
     ],
   },
