@@ -17,10 +17,13 @@ import CardBody from "react-bootstrap/esm/CardBody";
 export default function Issue() {
   const [issueVal, setIssueVal] = useState("");
   const [result, setResult] = useState("");
+  const [aiBox, setAiBox] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [question, setQuestion] = useState("");
 
-  // useEffect(() => {
-  //   // document.getElementById(answer).style.visibility = "visable";
-  // }, [result]);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,14 +33,23 @@ export default function Issue() {
     };
     console.log(IssueGPT);
 
+    setLoading(true);
     const gptAnswer = async () => {
-      let gptRes = {};
+      // let gptRes = {};
 
-      gptRes = await toGPT(IssueGPT);
+      const gptRes = await toGPT(IssueGPT);
+
+      if (!gptRes.ok) {
+        console.log("errer");
+      }
 
       setResult(gptRes.data.response);
+      setLoading(false);
+      setAiBox(true);
 
       console.log(gptRes.data.response);
+      setQuestion(issueVal);
+      setIssueVal("");
     };
 
     gptAnswer();
@@ -68,7 +80,6 @@ export default function Issue() {
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  id="issue"
                   value={issueVal}
                   title="Can not be blank, please enter issue"
                   required
@@ -85,25 +96,36 @@ export default function Issue() {
         </Col>
       </Container>
 
-      <Container id="answer">
-        <div>
-          <h2>Our AI suggests the following:</h2>
-          <Card body>
-            <RespForm responce={result} />
-          </Card>
-          <h2>Was this helpful?</h2>
+      {aiBox ? (
+        <Container>
+          <div>
+            <h2>Our AI suggests the following:</h2>
+            <Card body>
+              <RespForm responce={result} question={question} />
+            </Card>
+            <h2>Was this helpful?</h2>
 
-          <Row>
-            <Col className="text-center">
-              <Button variant="success">Yes</Button>
-            </Col>
+            <Row>
+              <Col className="text-center">
+                <Button variant="success">Yes</Button>
+              </Col>
 
-            <Col className="text-center">
-              <Button variant="success">No</Button>
-            </Col>
-          </Row>
-        </div>
-      </Container>
+              <Col className="text-center">
+                <a href="/endpage">
+                  <Button variant="success">No</Button>
+                </a>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      ) : (
+        ""
+      )}
+      {loading ? (
+        <Container className="text-center">"Content is loading"</Container>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

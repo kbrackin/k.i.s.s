@@ -5,6 +5,13 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
+// Auth items
+const JsonWebToken = require("jsonwebtoken");
+const Bcrypt = require("bcryptjs");
+const BodyParser = require("body-parser");
+const SECRET_JWT_CODE = "tacoman";
+app.use(BodyParser.json());
+
 //api add
 const routes = require("./routes");
 
@@ -15,8 +22,8 @@ app.use(express.json());
 app.use(routes);
 
 //Mongo
-const db = require('./config/connection')
-
+const db = require("./config/connection");
+const bodyParser = require("body-parser");
 
 // host public react
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -25,7 +32,8 @@ app.get("*", (req, res) => {
 });
 
 // start express with mongoose
-db.once('open', () => {
-  app.listen(process.env.PORT, () => console.log(`Server is listening port ${process.env.PORT}`))
-})
-
+db.once("open", () => {
+  app.listen(process.env.PORT, () =>
+    console.log(`Server is listening port ${process.env.PORT}`)
+  );
+});

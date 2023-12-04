@@ -7,6 +7,7 @@ import AIhelp from "./pages/issueform";
 import LoginForm from "./pages/login";
 import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
+import Endpage from "./pages/endpage";
 
 // router paths for site
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/AIhelp",
         element: <AIhelp />,
+      },
+      {
+        path: "/endpage",
+        element: <Endpage />,
       },
     ],
   },

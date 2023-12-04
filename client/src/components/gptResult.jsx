@@ -1,5 +1,9 @@
 function GPTResp(props) {
-  return <>{props.responce}</>;
+  return (
+    <>
+      <p>User: {props.question}</p>
+      <p>SupportBot: {props.responce}</p>
+    </>
+  );
 }
-
 export default GPTResp;
