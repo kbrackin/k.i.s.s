@@ -1,0 +1,24 @@
+.aihelper {
+  background-image: url("/aiman.webp");
+  background-size: cover;
+  color: white;
+}
+
+.headertop {
+  display: flex;
+  align-items: center;
+  background-image: url("/logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100px;
+
+  color: white;
+}
+
+.errorpage {
+  background-image: url("/aiman.webp");
+  background-size: initial;
+  height: 100%;
+  color: white;
+}
