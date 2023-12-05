@@ -1,3 +1,8 @@
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
 body {
   font-family: "Share Tech Mono", monospace;
 }
@@ -33,10 +38,6 @@ body {
 
 /* Login Page */
 
-@import "@radix-ui/colors/black-alpha.css";
-@import "@radix-ui/colors/orange.css";
-@import "@radix-ui/colors/mauve.css";
-@import "@radix-ui/colors/violet.css";
 ​
 /* reset */
 button,
