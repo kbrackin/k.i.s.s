@@ -7,6 +7,8 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function loginForm() {
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -23,7 +25,7 @@ function loginForm() {
         type="password"
       />
 
-      <div className="d-flex justify-content-between mx-3 mb-4">
+      {/* <div className="d-flex justify-content-between mx-3 mb-4">
         <MDBCheckbox
           name="flexCheck"
           value=""
@@ -31,7 +33,7 @@ function loginForm() {
           label="Remember me"
         />
         <a href="!#">Forgot password?</a>
-      </div>
+      </div> */}
 
       <MDBBtn className="mb-4">Sign in</MDBBtn>
 
@@ -39,7 +41,6 @@ function loginForm() {
         <p>
           Not a member? <a href="#!">Register</a>
         </p>
-        <p>or sign up with:</p>
       </div>
     </MDBContainer>
   );

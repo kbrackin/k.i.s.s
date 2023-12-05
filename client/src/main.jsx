@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //import pages
-import IssueForm from "./pages/issueform";
+import AIhelp from "./pages/issueform";
 import LoginForm from "./pages/login";
-// import ErrorPage from "./pages/error";
+import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
+import Endpage from "./pages/endpage";
 
 // router paths for site
 
@@ -14,15 +15,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/login",
         element: <LoginForm />,
       },
       {
-        path: "/issue",
-        element: <IssueForm />,
+        path: "/AIhelp",
+        element: <AIhelp />,
+      },
+      {
+        path: "/endpage",
+        element: <Endpage />,
       },
     ],
   },
