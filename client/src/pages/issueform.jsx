@@ -108,13 +108,15 @@ export default function Issue() {
             <Row>
               <Col className="text-center">
                 <a href="/endpage">
-                <Button variant="success">Yes</Button>
+                  <Button variant="success">Yes</Button>
                 </a>
               </Col>
 
               <Col className="text-center">
                 <a>
-                  <Button variant="success">No</Button>
+                  <a href="/helpneeded">
+                    <Button variant="success">No</Button>
+                  </a>
                 </a>
               </Col>
             </Row>
