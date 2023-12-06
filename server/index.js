@@ -6,11 +6,6 @@ const express = require("express");
 const app = express();
 
 // Auth items
-const JsonWebToken = require("jsonwebtoken");
-const Bcrypt = require("bcryptjs");
-const BodyParser = require("body-parser");
-const SECRET_JWT_CODE = "tacoman";
-app.use(BodyParser.json());
 
 //api add
 const routes = require("./routes");
@@ -23,7 +18,6 @@ app.use(routes);
 
 //Mongo
 const db = require("./config/connection");
-const bodyParser = require("body-parser");
 
 // host public react
 app.use(express.static(path.join(__dirname, "../client/dist")));

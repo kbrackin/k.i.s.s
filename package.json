@@ -8,14 +8,14 @@
     "develop": "concurrently \"nodemon server/index.js\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
+    
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@radix-ui/react-form": "^0.0.3",
-    "@radix-ui/themes": "^2.0.1",
     "concurrently": "^8.2.2",
     "dotenv": "^16.3.1",
     "nodemon": "^3.0.2"
+    
   }
 }
