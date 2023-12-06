@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Col from "react-bootstrap/Col";
 import "../style.css";
 
 import Button from "react-bootstrap/Button";
@@ -11,7 +12,9 @@ function homePage() {
         <h1>K.I.S.S. Support System</h1>
       </header>
 
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
