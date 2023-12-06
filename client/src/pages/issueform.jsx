@@ -40,7 +40,7 @@ export default function Issue() {
       const gptRes = await toGPT(IssueGPT);
 
       if (!gptRes.ok) {
-        console.log("errer");
+        console.log("error");
       }
 
       setResult(gptRes.data.response);
