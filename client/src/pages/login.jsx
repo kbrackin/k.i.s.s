@@ -1,49 +1,102 @@
-import React from "react";
-import {
-  MDBContainer,
-  MDBInput,
-  MDBCheckbox,
-  MDBBtn,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+// see SignupForm.js for comments
+import { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import { loginUser } from "../api/authapi";
+import Auth from "../api/auth";
 
-function loginForm() {
+const LoginForm = () => {
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const response = await loginUser(userFormData);
+
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const { token, user } = await response.json();
+      console.log(user);
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
+
+    setUserFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
   return (
-    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
-      <MDBInput
-        wrapperClass="mb-4"
-        label="Email address"
-        id="form1"
-        type="email"
-      />
-      <MDBInput
-        wrapperClass="mb-4"
-        label="Password"
-        id="form2"
-        type="password"
-      />
+    <>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <Alert
+          dismissible
+          onClose={() => setShowAlert(false)}
+          show={showAlert}
+          variant="danger"
+        >
+          Something went wrong with your login credentials!
+        </Alert>
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Your email"
+            name="email"
+            onChange={handleInputChange}
+            value={userFormData.email}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Email is required!
+          </Form.Control.Feedback>
+        </Form.Group>
 
-      {/* <div className="d-flex justify-content-between mx-3 mb-4">
-        <MDBCheckbox
-          name="flexCheck"
-          value=""
-          id="flexCheckDefault"
-          label="Remember me"
-        />
-        <a href="!#">Forgot password?</a>
-      </div> */}
-
-      <MDBBtn className="mb-4">Sign in</MDBBtn>
-
-      <div className="text-center">
-        <p>
-          Not a member? <a href="#!">Register</a>
-        </p>
-      </div>
-    </MDBContainer>
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Your password"
+            name="password"
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Password is required!
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Button
+          disabled={!(userFormData.email && userFormData.password)}
+          type="submit"
+          variant="success"
+        >
+          Submit
+        </Button>
+      </Form>
+    </>
   );
-}
+};
 
-export default loginForm;
+export default LoginForm;
