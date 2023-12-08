@@ -11,7 +11,6 @@ import Endpage from "./pages/endpage";
 import RadLogin from "./pages/radlogin";
 import HelpNeeded from "./pages/helpneeded";
 import CreateAccount from "./pages/createAccount";
-import UserDashboard from "./pages/userDashboard";
 import UserDashContent from "./components/userdash-content";
 import UserDashSidebar from "./components/userdash-sidebar";
 
@@ -49,15 +48,11 @@ const router = createBrowserRouter([
     element: <HelpNeeded />,
   },
   {
-    path: "/dashboard",
-    element: <UserDashboard />,
-  },
-  {
-    path: "/:userid",
+    path: "/dashboard/:userid",
     element: <UserDashSidebar />,
     children: [
         {
-            path: "/:userid/:ticketid",
+            path: "/:ticketid",
             element: <UserDashContent />
         }]
 }
