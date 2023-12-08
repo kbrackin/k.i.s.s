@@ -1,8 +1,11 @@
 import axios from "axios";
 
-const toGPT = (issueData) =>
+const toIssues = (userId) =>
   axios
-    .post("/api/chatgpt/", issueGPT)
+    .post(`/api/issue/${userId}`, {
+      issues: "borken",
+      resolved: false,
+    })
     .then(function (response) {
       return response;
     })
@@ -10,7 +13,7 @@ const toGPT = (issueData) =>
       return error;
     });
 
-export default toGPT;
+export default toIssues;
 
 // const toGPT = (issueGPT) =>
 //   axios
