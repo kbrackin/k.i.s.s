@@ -28,6 +28,17 @@ module.exports = {
     }
   },
 
+  async getAllIssues(req, res) {
+    console.log(req.body);
+
+    try {
+      const allIssues = await user.find({}).sort({ _id: -1 });
+      res.json(allIssues);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
   async routeTest(req, res) {
     try {
       res.send("Test Worked");

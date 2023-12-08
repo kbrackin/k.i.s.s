@@ -13,6 +13,7 @@ import HelpNeeded from "./pages/helpneeded";
 import CreateAccount from "./pages/createAccount";
 import UserDashContent from "./components/userdash-content";
 import UserDashSidebar from "./components/userdash-sidebar";
+import CreateAccount from "./pages/createaccount";
 
 
 //import radix theme
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
     element: <Endpage />,
   },
   {
-    path: "/createAccount",
+    path: "/createaccount",
     element: <CreateAccount />,
   },
   {
@@ -64,3 +65,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+
