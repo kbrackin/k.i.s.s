@@ -2,48 +2,43 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 const issueSchema = require("./issues");
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    unique: false,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: false,
-    trim: true,
-  },
-  isTech: {
-    type: Boolean,
-    required: true,
-    unique: false,
-  },
-  issues: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "issue",
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
     },
-  ],
-},
-{
-  toJSON: {
-    virtuals: true,
+    password: {
+      type: String,
+      required: true,
+      unique: false,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: false,
+      trim: true,
+    },
+    isTech: {
+      type: Boolean,
+      required: true,
+      unique: false,
+    },
+    issues: [issueSchema],
   },
-}
-
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 // hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
