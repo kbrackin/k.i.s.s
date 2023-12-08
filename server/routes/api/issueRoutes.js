@@ -12,6 +12,6 @@ const {
 
 router.route("/:userID").post(putIssue);
 
-router.route("/").get(getAllIssues);
+router.route("/").get(getAllIssues).post(putUser);
 
 module.exports = router;
