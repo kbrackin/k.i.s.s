@@ -9,8 +9,12 @@ import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
 import Endpage from "./pages/endpage";
 import RadLogin from "./pages/radlogin";
-import HelpNeeded from "./pages/helpNeeded";
+import HelpNeeded from "./pages/helpneeded";
 import CreateAccount from "./pages/createAccount";
+import UserDashboard from "./pages/userDashboard";
+import UserDashContent from "./components/userdash-content";
+import UserDashSidebar from "./components/userdash-sidebar";
+
 
 //import radix theme
 import { Theme, ThemePanel } from "@radix-ui/themes";
@@ -44,6 +48,19 @@ const router = createBrowserRouter([
     path: "/helpneeded",
     element: <HelpNeeded />,
   },
+  {
+    path: "/dashboard",
+    element: <UserDashboard />,
+  },
+  {
+    path: "/:userid",
+    element: <UserDashSidebar />,
+    children: [
+        {
+            path: "/:userid/:ticketid",
+            element: <UserDashContent />
+        }]
+}
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -52,4 +69,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-//here is a change

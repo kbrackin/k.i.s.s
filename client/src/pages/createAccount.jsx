@@ -1,8 +1,6 @@
 import { Card, Flex, Text, Button, Theme } from "@radix-ui/themes";
 import React from 'react';
-import * as Form from '@radix-ui/react-form';
 import '../style.css';
-import * as Separator from '@radix-ui/react-separator';
 import * as Tabs from '@radix-ui/react-tabs';
 
 const TabsDemo = () => (
