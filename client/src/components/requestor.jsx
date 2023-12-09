@@ -1,7 +1,7 @@
 function RequestorList(props) {
   return (
     <>
-      <p>User: {props.username}</p>
+      <p>User: {props.User}</p>
       <p>Email: {props.email}</p>
     </>
   );

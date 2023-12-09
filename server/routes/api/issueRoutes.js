@@ -3,6 +3,7 @@ const { authMiddleware } = require("../../utils/auth");
 
 const {
   putUser,
+  getAllRequestors,
   routeTest,
   getAllIssues,
   putIssue,
@@ -12,6 +13,8 @@ const {
 
 router.route("/:userID").post(putIssue);
 
-router.route("/").get(getAllIssues).post(putUser);
+router.route("/issues").get(getAllIssues).post(putUser);
+
+router.route("/users").get(getAllRequestors);
 
 module.exports = router;
