@@ -1,4 +1,4 @@
-const { user, issues } = require("../models");
+const { User, issues } = require("../models");
 
 module.exports = {
   async putUser(req, res) {
@@ -14,7 +14,7 @@ module.exports = {
     console.log(req.body);
 
     try {
-      const UserIssue = await user.findOneAndUpdate(
+      const UserIssue = await UIEventser.findOneAndUpdate(
         { _id: req.params.userID },
         { $push: { issues: req.body } },
         { runValidators: true, new: true }
@@ -32,7 +32,7 @@ module.exports = {
     console.log("hit");
 
     try {
-      const allIssues = await user.find({}).sort({ _id: -1 });
+      const allIssues = await User.find({}).sort({ _id: -1 });
       res.json(allIssues);
     } catch (err) {
       res.status(500).json(err);
@@ -43,7 +43,7 @@ module.exports = {
     console.log(req.body);
 
     try {
-      const allReq = await user.find();
+      const allReq = await User.find();
       res.json(allReq);
     } catch (err) {
       res.status(500).json(err);
