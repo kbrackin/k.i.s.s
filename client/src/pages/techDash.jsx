@@ -1,44 +1,50 @@
-import React, { useState, useEffect, Map } from "react";
-import "../style.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row } from "react-bootstrap";
-import Requestor from "../components/requestor";
-import getReqs from "../api/requestor";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const data = [];
+const ApiData = () => {
+  const [data, setData] = useState([]);
 
-function TechDash() {
-  const [requestor, setRequestor] = useState("");
-
-  const click = () => {
-    console.log("click");
-
-    const data = getReqs();
-    setRequestor(data);
-    console.log(data);
-  };
+  useEffect(() => {
+    // Replace 'your-api-endpoint' with the actual API endpoint
+    axios
+      .get("/api/issue/users/")
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <div>
-      {/* <Row>
-        <button onClick={click}>load</button>
-        {requestor ? (
+      {/* <ul>
+        {data.map((item) => (
+          <li key={item._id}>Name: {item.email}</li>  
+          {data.issue.map(())
+          
+          }
+          export default function Recipes() {
+            return (
+                <div>
+                    {recipes.map((recipe) => {
+                        return <div key={recipe.id}>
+                            <h1>{recipe.title}</h1>
+                            <img src={recipe.image} alt="recipe image" />
+                            {recipe.dishTypes.map((type, index) => {
+                                return <span key={index}>{type}</span>
+                            })}
+                        </div>
+                    })}
+                </div>
+            )
+        }
 
-   {data.map((data, i) => (
-    <Col>
-      <Requestor User={data.data.username} />
-    </Col>
-  ))}
-
-        ) : ("") }
-      
-
-        <Col>
-          <h2>Requests</h2>
-        </Col>
-      </Row> */}
+        ))}
+      </ul> */}
     </div>
   );
-}
+};
 
-export default TechDash;
+export default ApiData;
