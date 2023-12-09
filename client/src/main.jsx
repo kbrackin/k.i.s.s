@@ -8,12 +8,13 @@ import LoginForm from "./pages/login";
 import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
 import Endpage from "./pages/endpage";
-import RadLogin from "./pages/radlogin";
 import HelpNeeded from "./pages/helpneeded";
 import CreateAccount from "./pages/createAccount";
 import UserDashContent from "./components/userdash-content";
 import UserDashSidebar from "./components/userdash-sidebar";
-
+import CreateAccount from "./pages/SignupForm";
+import Helporask from "./pages/askorhelp";
+import TechDash from "./pages/techDash";
 
 //import radix theme
 import { Theme, ThemePanel } from "@radix-ui/themes";
@@ -24,7 +25,7 @@ import "@radix-ui/themes/styles.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RadLogin />,
+    element: <Helporask />,
     errorElement: <ErrorPage />,
   },
   {
@@ -48,14 +49,25 @@ const router = createBrowserRouter([
     element: <HelpNeeded />,
   },
   {
-    path: "/dashboard/:userid",
-    element: <UserDashSidebar />,
-    children: [
-        {
-            path: "/:ticketid",
-            element: <UserDashContent />
-        }]
-}
+    path: "/helporask",
+    element: <Helporask />,
+  },
+
+  {
+    path: "/techdash",
+    element: <TechDash />,
+  },
+
+  // {
+  //   path: "/dashboard/:userid",
+  //   element: <UserDashSidebar />,
+  //   children: [
+  //     {
+  //       path: "/:ticketid",
+  //       element: <UserDashContent />,
+  //     },
+  //   ],
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -64,5 +76,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-
