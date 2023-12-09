@@ -10,11 +10,9 @@ import HomePage from "./pages/home";
 import Endpage from "./pages/endpage";
 import RadLogin from "./pages/radlogin";
 import HelpNeeded from "./pages/helpneeded";
-import CreateAccount from "./pages/createAccount";
+import CreateAccount from "./pages/SignupForm";
 import UserDashContent from "./components/userdash-content";
 import UserDashSidebar from "./components/userdash-sidebar";
-import CreateAccount from "./pages/createaccount";
-
 
 //import radix theme
 import { Theme, ThemePanel } from "@radix-ui/themes";
@@ -25,7 +23,7 @@ import "@radix-ui/themes/styles.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RadLogin />,
+    element: <LoginForm />,
     errorElement: <ErrorPage />,
   },
   {
@@ -48,15 +46,16 @@ const router = createBrowserRouter([
     path: "/helpneeded",
     element: <HelpNeeded />,
   },
-  {
-    path: "/dashboard/:userid",
-    element: <UserDashSidebar />,
-    children: [
-        {
-            path: "/:ticketid",
-            element: <UserDashContent />
-        }]
-}
+  // {
+  //   path: "/dashboard/:userid",
+  //   element: <UserDashSidebar />,
+  //   children: [
+  //     {
+  //       path: "/:ticketid",
+  //       element: <UserDashContent />,
+  //     },
+  //   ],
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -65,5 +64,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-

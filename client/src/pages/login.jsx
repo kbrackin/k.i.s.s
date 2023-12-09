@@ -94,6 +94,9 @@ const LoginForm = () => {
         >
           Submit
         </Button>
+        <a href="/createaccount">
+          <Button variant="success">Create Account</Button>
+        </a>
       </Form>
     </>
   );
