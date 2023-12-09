@@ -29,11 +29,22 @@ module.exports = {
   },
 
   async getAllIssues(req, res) {
-    console.log(req.body);
+    console.log("hit");
 
     try {
       const allIssues = await user.find({}).sort({ _id: -1 });
       res.json(allIssues);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  async getAllRequestors(req, res) {
+    console.log(req.body);
+
+    try {
+      const allReq = await user.find();
+      res.json(allReq);
     } catch (err) {
       res.status(500).json(err);
     }

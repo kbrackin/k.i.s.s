@@ -1,16 +1,15 @@
 import axios from "axios";
 
-const toIssues = (userId) =>
+const getReqs = () =>
   axios
-    .post(`/api/issue/${userId}`, {
-      issues: "borken",
-      resolved: false,
-    })
+    .get("/api/issue/users/")
     .then(function (response) {
+      console.log(response);
+      console.log("run");
       return response;
     })
     .catch(function (error) {
       return error;
     });
 
-export default toIssues;
+export default getReqs;

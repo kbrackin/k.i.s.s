@@ -5,6 +5,6 @@ const { getTest, postAnswer } = require("../../controllers/gptController.js");
 
 router.route("/").post(postAnswer).get(getTest);
 
-router.route("/");
+// router.route("/");
 
 module.exports = router;
