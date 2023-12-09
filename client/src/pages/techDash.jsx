@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Requestor from "../components/requestor";
 import axios from "axios";
 
 const ApiData = () => {
@@ -19,30 +20,18 @@ const ApiData = () => {
 
   return (
     <div>
-      {/* <ul>
+      <ul>
         {data.map((item) => (
-          <li key={item._id}>Name: {item.email}</li>  
-          {data.issue.map(())
-          
-          }
-          export default function Recipes() {
-            return (
-                <div>
-                    {recipes.map((recipe) => {
-                        return <div key={recipe.id}>
-                            <h1>{recipe.title}</h1>
-                            <img src={recipe.image} alt="recipe image" />
-                            {recipe.dishTypes.map((type, index) => {
-                                return <span key={index}>{type}</span>
-                            })}
-                        </div>
-                    })}
-                </div>
-            )
-        }
+          <Requestor
+            name={item.username}
+            email={item.email}
+            key={item._id}
+            issues={item.issues}
+          />
 
+          // <li key={item._id}>Name: {item.email}</li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 };
