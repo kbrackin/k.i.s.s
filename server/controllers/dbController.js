@@ -57,4 +57,18 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  async getAUser(req, res) {
+    console.log(req.body);
+
+    try {
+      const aUser = await User.findOne({ _id: req.params.userID });
+      if (!aUser) {
+        return res.status(404).json({ message: "No user with this id!" });
+      }
+      res.json(aUser);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };

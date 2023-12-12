@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Form, Card, Col } from "react-bootstrap";
+import Auth from "../util/auth";
 
 import RespForm from "../components/gptResult";
 
@@ -40,11 +41,9 @@ export default function Issue() {
         console.log("error");
       }
 
-      toIssues();
-
-      setResult(gptRes.data.response);
       setLoading(false);
       setAiBox(true);
+      setResult(gptRes.data.response);
 
       console.log(gptRes.data.response);
       setQuestion(issueVal);
@@ -52,6 +51,12 @@ export default function Issue() {
     };
 
     gptAnswer();
+  };
+
+  const handleDB = (event) => {
+    const udata = Auth.getProfile();
+    console.log(udata);
+    toIssues(udata.data._id, question);
   };
 
   return (
@@ -112,10 +117,10 @@ export default function Issue() {
               </Col>
 
               <Col className="text-center">
-                <a>
-                  <a href="/helpneeded">
-                    <Button variant="success">No</Button>
-                  </a>
+                <a href="/userDash">
+                  <Button variant="success" onClick={handleDB}>
+                    No
+                  </Button>
                 </a>
               </Col>
             </Row>
