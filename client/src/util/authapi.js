@@ -1,6 +1,6 @@
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
-  return fetch("/api/issue/users/", {
+  return fetch("/api/auth/me", {
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
