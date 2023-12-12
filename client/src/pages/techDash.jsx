@@ -27,6 +27,7 @@ const ApiData = () => {
             email={item.email}
             key={item._id}
             issues={item.issues}
+            resolved={item.issues.resolved}
           />
 
           // <li key={item._id}>Name: {item.email}</li>

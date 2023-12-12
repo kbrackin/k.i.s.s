@@ -53,7 +53,7 @@ body {
 
 /* Login Page */
 
-​
+
 /* reset */
 button,
 fieldset,
@@ -181,4 +181,13 @@ input {
 .fullTarget {
   display: flex;
   justify-content: center;
+}
+
+#tablecontent{
+  border: 1px black solid;
+  min-width: 75vw;
+}
+
+#tablecontent:hover{
+  background-color: lightgray;
 }
