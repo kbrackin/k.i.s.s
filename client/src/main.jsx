@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //import pages
-
+// up
 //import radix theme
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
@@ -23,7 +23,7 @@ import Auth from "./util/auth";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Helporask />,
+    element: Auth.loggedIn() ? <Helporask /> : <LoginForm />,
     errorElement: Auth.loggedIn() ? <ErrorPage /> : <LoginForm />,
   },
   {
