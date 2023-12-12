@@ -32,7 +32,7 @@ module.exports = {
     console.log("hit");
 
     try {
-      const allIssues = await User.find({}).sort({ _id: -1 });
+      const allIssues = await User.find({}).sort({ _id: -1 }).select('-password');
       res.json(allIssues);
     } catch (err) {
       res.status(500).json(err);
@@ -43,7 +43,7 @@ module.exports = {
     console.log(req.body);
 
     try {
-      const allReq = await User.find();
+      const allReq = await User.find().select('-password');
       res.json(allReq);
     } catch (err) {
       res.status(500).json(err);
