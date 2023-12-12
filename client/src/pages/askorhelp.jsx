@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../style.css";
@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function askOrHelp() {
   return (
     <div>
+
       <Row className="justify-content-center">
         <div >
           <h1>Welcome to our support site!</h1>

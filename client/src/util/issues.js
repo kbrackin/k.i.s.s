@@ -1,10 +1,11 @@
 import axios from "axios";
+import Auth from "../util/auth";
 
-const toIssues = (userId) =>
+const toIssues = (userId, issue, resolved) =>
   axios
     .post(`/api/issue/${userId}`, {
-      issues: "borken",
-      resolved: false,
+      issues: `${issue}`,
+      resolved: `${resolved}`,
     })
     .then(function (response) {
       return response;

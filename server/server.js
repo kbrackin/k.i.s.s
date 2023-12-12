@@ -1,5 +1,6 @@
 require("dotenv").config();
 const path = require("path");
+const { authMiddleware } = require("./utils/auth");
 
 // Express setup
 const express = require("express");

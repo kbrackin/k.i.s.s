@@ -18,12 +18,13 @@ import HelpNeeded from "./pages/helpneeded";
 import CreateAccount from "./pages/SignupForm";
 import Helporask from "./pages/askorhelp";
 import TechDash from "./pages/techDash";
+import Auth from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Helporask />,
-    errorElement: <ErrorPage />,
+    errorElement: Auth.loggedIn() ? <ErrorPage /> : <LoginForm />,
   },
   {
     path: "/login",
@@ -31,11 +32,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/AIhelp",
-    element: <AIhelp />,
+    element: Auth.loggedIn() ? <AIhelp /> : <LoginForm />,
   },
   {
     path: "/endpage",
-    element: <Endpage />,
+    element: Auth.loggedIn() ? <Endpage /> : <LoginForm />,
   },
   {
     path: "/createaccount",
@@ -43,28 +44,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/helpneeded",
-    element: <HelpNeeded />,
+    element: Auth.loggedIn() ? <HelpNeeded /> : <LoginForm />,
   },
   {
     path: "/helporask",
-    element: <Helporask />,
+    element: Auth.loggedIn() ? <Helporask /> : <LoginForm />,
   },
 
   {
     path: "/techdash",
-    element: <TechDash />,
+    element: Auth.loggedIn() ? <TechDash /> : <LoginForm />,
   },
-
-  // {
-  //   path: "/dashboard/:userid",
-  //   element: <UserDashSidebar />,
-  //   children: [
-  //     {
-  //       path: "/:ticketid",
-  //       element: <UserDashContent />,
-  //     },
-  //   ],
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

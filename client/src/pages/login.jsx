@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
-import { loginUser } from "../api/authapi";
-import Auth from "../api/auth";
+import { loginUser } from "../util/authapi";
+import Auth from "../util/auth";
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
