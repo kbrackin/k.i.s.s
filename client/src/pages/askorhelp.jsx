@@ -7,8 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function askOrHelp() {
   return (
     <div>
-      <Row>
-        <div className="">
+      <Row className="justify-content-center">
+        <div >
           <h1>Welcome to our support site!</h1>
           <p>
             Our AI support bot is waiting to help you. If you need further
@@ -18,15 +18,15 @@ function askOrHelp() {
         </div>
       </Row>
 
-      <Row>
-        <Col>
-          <Card style={{ width: "18rem" }}>
+      <Row className="justify-content-center">
+        <Col md={3} className="text-center text-md-right">
+          <Card style={{ width: "18rem" }} className="square border border-5 border-primary">
             <Card.Img variant="top" src="aiman.webp" />
             <Card.Body>
               <Card.Title>AI Support</Card.Title>
               <Card.Text>
                 Get quick help and request further support if needed from our
-                AI. Helpdesk
+                AI Helpdesk.
               </Card.Text>
               <Link to="/aihelp">
                 <Button variant="primary">AI Helpdesk</Button>
@@ -35,8 +35,8 @@ function askOrHelp() {
           </Card>
         </Col>
 
-        <Col>
-          <Card style={{ width: "18rem" }}>
+        <Col md={3} className="text-center text-md-right">
+          <Card style={{ width: "18rem" }} className="square border border-5 border-primary">
             <Card.Img variant="top" src="/theITcrowd.jpg" />
             <Card.Body>
               <Card.Title>Help Someone</Card.Title>
