@@ -23,7 +23,7 @@ import Auth from "./util/auth";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Helporask />,
+    element: Auth.loggedIn() ? <Helporask /> : <LoginForm />,
     errorElement: Auth.loggedIn() ? <ErrorPage /> : <LoginForm />,
   },
   {
