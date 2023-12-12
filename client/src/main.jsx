@@ -19,6 +19,7 @@ import CreateAccount from "./pages/SignupForm";
 import Helporask from "./pages/askorhelp";
 import TechDash from "./pages/techDash";
 import Auth from "./util/auth";
+import UserDash from "./pages/userDash";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/techdash",
     element: Auth.loggedIn() ? <TechDash /> : <LoginForm />,
+  },
+  {
+    path: "/userdash",
+    element: Auth.loggedIn() ? <UserDash /> : <LoginForm />,
   },
 ]);
 
