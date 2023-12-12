@@ -2,6 +2,7 @@ const { User } = require("../models");
 
 const { signToken } = require("../utils/auth");
 
+// notes
 module.exports = {
   async createUser({ body }, res) {
     const userinfo = await User.create(body);
