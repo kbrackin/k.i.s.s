@@ -1,20 +1,20 @@
 const { User, issues } = require("../models");
 
 module.exports = {
-  async putUser(req, res) {
-    try {
-      const User = await user.create(req.body);
-      res.json(User);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+  // async putUser(req, res) {
+  //   try {
+  //     const User = await user.create(req.body);
+  //     res.json(User);
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // },
 
   async putIssue(req, res) {
     console.log(req.body);
 
     try {
-      const UserIssue = await UIEventser.findOneAndUpdate(
+      const UserIssue = await User.findOneAndUpdate(
         { _id: req.params.userID },
         { $push: { issues: req.body } },
         { runValidators: true, new: true }

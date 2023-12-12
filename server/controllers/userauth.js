@@ -7,7 +7,7 @@ module.exports = {
     const userinfo = await User.create(body);
 
     if (!userinfo) {
-      return res.status(400).json({ message: "Something is wrong!" });
+      return res.status(400).json({ message: "Something is wrong, error!" });
     }
     const token = signToken(userinfo);
     res.json({ token, userinfo });
@@ -30,15 +30,34 @@ module.exports = {
     const token = signToken(userinfo);
     res.json({ token, userinfo });
   },
-  async getOneUser({ user = null, params }, res) {
-    const singleUser = await User.findOne({
-      $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
-    })
-    if (!singleUser) {
-      return res.status(400).json({ message: 'no user exists' })
+
+  async getSingleUser({ user = null, params }, res) {
+    const foundUser = await User.findOne({
+      $or: [
+        { _id: user ? user._id : params.id },
+        { username: params.username },
+      ],
+    });
+
+    if (!foundUser) {
+      return res
+        .status(400)
+        .json({ message: "Cannot find a user with this id!" });
     }
-    res.json(singleUser)
-  }
 
+    res.json(foundUser);
+  },
 
+  // async getOneUser({ user = null, params }, res) {
+  //   const singleUser = await User.findOne({
+  //     $or: [
+  //       { _id: user ? user._id : params.id },
+  //       { username: params.username },
+  //     ],
+  //   });
+  //   if (!singleUser) {
+  //     return res.status(400).json({ message: "no user exists" });
+  //   }
+  //   res.json(singleUser);
+  // },
 };

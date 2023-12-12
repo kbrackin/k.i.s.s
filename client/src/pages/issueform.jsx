@@ -6,8 +6,8 @@ import RespForm from "../components/gptResult";
 import "../style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import toGPT from "../api/toGPT";
-import toIssues from "../api/issues";
+import toGPT from "../util/toGPT";
+import toIssues from "../util/issues";
 import CardBody from "react-bootstrap/esm/CardBody";
 
 export default function Issue() {
@@ -16,6 +16,7 @@ export default function Issue() {
   const [aiBox, setAiBox] = useState(false);
   const [loading, setLoading] = useState(false);
   const [question, setQuestion] = useState("");
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
     setLoading(false);
@@ -39,7 +40,7 @@ export default function Issue() {
         console.log("error");
       }
 
-      toIssues("657263cea119534279281bc2");
+      toIssues();
 
       setResult(gptRes.data.response);
       setLoading(false);
