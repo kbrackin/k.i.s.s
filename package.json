@@ -2,7 +2,7 @@
   "name": "gpt-learning",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"nodemon server/server.js\" \"cd client && npm run dev\"",
