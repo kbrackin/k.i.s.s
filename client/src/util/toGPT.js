@@ -23,12 +23,3 @@ export default toGPT;
     Authorization: `Bearer ${Auth.getToken()}`;
   }
 }
-
-// axios
-// .post("/api/chatgpt/", issueGPT)
-// .then(function (response) {
-//   return response;
-// })
-// .catch(function (error) {
-//   return error;
-// });

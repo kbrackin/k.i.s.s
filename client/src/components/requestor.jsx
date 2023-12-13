@@ -1,4 +1,4 @@
-import { Col, Row, Button } from "react-bootstrap";
+import { Col, Row, Button, Form } from "react-bootstrap";
 
 function RequestorList(props) {
   return (
@@ -24,7 +24,14 @@ function RequestorList(props) {
                     <td id="tablecontent">Issue: {issue.issues}</td>
                     <td id="tablecontent">
                       {" "}
-                      Is Resolved: {issue.resolved.toString()}
+                      Is Resolved:{" "}
+                      <Form>
+                        <Form.Check // prettier-ignore
+                          type="switch"
+                          id="custom-switch"
+                          label="Check this switch"
+                        />
+                      </Form>
                     </td>
                   </div>
                 ))}
@@ -40,3 +47,5 @@ function RequestorList(props) {
   );
 }
 export default RequestorList;
+
+//{issue.resolved.toString()

@@ -120,8 +120,8 @@ const SignupForm = () => {
               userFormData.password
             )
           }
-          type="submit"
           variant="success"
+          type="submit"
         >
           Submit
         </Button>

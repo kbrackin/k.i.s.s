@@ -79,7 +79,7 @@ export default function Issue() {
             <Row>
               <Form.Group className="mb-3">
                 <Form.Label>
-                  Descirbe the support issue you are having:
+                  Describe the support issue you are having:
                 </Form.Label>
                 <Form.Control
                   as="textarea"
@@ -117,11 +117,11 @@ export default function Issue() {
               </Col>
 
               <Col className="text-center">
-                <a href="/userDash">
-                  <Button variant="success" onClick={handleDB}>
-                    No
-                  </Button>
-                </a>
+                {/* <a href="/helpneeded"> */}
+                <Button variant="success" onClick={handleDB}>
+                  No
+                </Button>
+                {/* </a> */}
               </Col>
             </Row>
           </div>

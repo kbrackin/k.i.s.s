@@ -4,8 +4,11 @@ import Auth from "../util/auth";
 const toIssues = (userId, question) =>
   axios
     .post(`/api/issue/${userId}`, {
-      issue: `${question}`,
+      issues: `${question}`,
       resolved: false,
+      headers: {
+        Authorization: `Bearer ${Auth.getToken()}`,
+      },
     })
     .then(function (response) {
       return response;
