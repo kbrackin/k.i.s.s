@@ -32,7 +32,9 @@ module.exports = {
     console.log("hit");
 
     try {
-      const allIssues = await User.find({}).sort({ _id: -1 }).select('-password');
+      const allIssues = await User.find({})
+        .sort({ _id: -1 })
+        .select("-password");
       res.json(allIssues);
     } catch (err) {
       res.status(500).json(err);
@@ -43,7 +45,7 @@ module.exports = {
     console.log(req.body);
 
     try {
-      const allReq = await User.find().select('-password');
+      const allReq = await User.find().select("-password");
       res.json(allReq);
     } catch (err) {
       res.status(500).json(err);
@@ -58,17 +60,17 @@ module.exports = {
     }
   },
 
-  async getAUser(req, res) {
-    console.log(req.body);
+  // async getAUser(req, res) {
+  //   console.log(req.body);
 
-    try {
-      const aUser = await User.findOne({ _id: req.params.userID });
-      if (!aUser) {
-        return res.status(404).json({ message: "No user with this id!" });
-      }
-      res.json(aUser);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+  //   try {
+  //     const aUser = await User.findOne({ _id: req.params.userID });
+  //     if (!aUser) {
+  //       return res.status(404).json({ message: "No user with this id!" });
+  //     }
+  //     res.json(aUser);
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // },
 };

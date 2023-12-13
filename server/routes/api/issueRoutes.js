@@ -5,10 +5,9 @@ const {
   getAllRequestors,
   getAllIssues,
   putIssue,
-  getAUser,
 } = require("../../controllers/dbController.js");
 
-router.route("/:userID").post(putIssue).get(getAUser);
+router.route("/:userID").post(putIssue);
 
 router.route("/issues").get(getAllIssues);
 
