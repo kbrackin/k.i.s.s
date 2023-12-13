@@ -4,11 +4,7 @@ import "../style.css";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Auth from "../util/auth"
-
-
-
-
+import Auth from "../util/auth";
 
 function homePage() {
   return (
@@ -17,8 +13,18 @@ function homePage() {
         <h1>K.I.S.S. Support System</h1>
       </header>
       <header>
-      <Button variant="primary" size="lg" href="helporask">Home</Button>
-      <Button variant="primary" size="sm" onClick={Auth.logout}>Logout</Button>
+        {localStorage.getItem("id_token") ? (
+          <div>
+            <Button variant="primary" size="lg" href="helporask">
+              Home
+            </Button>
+            <Button variant="danger" size="lg" onClick={Auth.logout}>
+              Logout
+            </Button>
+          </div>
+        ) : (
+          ""
+        )}
       </header>
 
       <main>

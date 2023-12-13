@@ -22,7 +22,7 @@ function Endpage() {
 
         <Col className="text-center">
           <a href="/logout">
-            <Button variant="success">Logout</Button>
+            <Button variant="danger">Logout</Button>
           </a>
         </Col>
       </Row>

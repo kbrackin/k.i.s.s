@@ -90,12 +90,12 @@ const LoginForm = () => {
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
-          variant="success"
+          variant="primary"
         >
           Submit
         </Button>
         <a href="/createaccount">
-          <Button variant="success">Create Account</Button>
+          <Button variant="primary">Create Account</Button>
         </a>
       </Form>
     </>
