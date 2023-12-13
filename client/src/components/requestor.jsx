@@ -39,7 +39,9 @@ function RequestorList(props) {
             </tr>
           </table>
           <Col>
+          <a href={`mailto:${props.email}`}>
             <Button>Contact User</Button>
+            </a>
           </Col>
         </Row>
       </p>
