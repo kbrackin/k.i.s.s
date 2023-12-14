@@ -60,6 +60,23 @@ module.exports = {
     }
   },
 
+  async updateIssue(req,res) {
+    try{
+    const isResolved = await User.findOneAndUpdate(
+      { _id: req.params.userID,"issues._id":req.params.issueID },
+      { $set: { "issues.$.resolved" :req.body.resolved }},
+      { runValidators: true, new: true })
+      if(isResolved){
+        res.json(isResolved)
+      }else{
+        res.status(400).json()
+      }
+
+    }catch{
+      res.status(400)
+    }
+  }
+
   // async getAUser(req, res) {
   //   console.log(req.body);
 
