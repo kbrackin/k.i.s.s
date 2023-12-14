@@ -186,11 +186,17 @@ input {
   justify-content: center;
 }
 
+#tablecontent-left {
+  border: 1px black solid;
+  min-width:70vw;
+  max-width:70vw
+}
 #tablecontent {
   border: 1px black solid;
-  min-width: 75vw;
+  min-width:25vw;
+  max-width: 25vw;
 }
 
-#tablecontent:hover {
+#tablecontent:hover, #tablecontent-left:hover {
   background-color: lightgray;
 }
