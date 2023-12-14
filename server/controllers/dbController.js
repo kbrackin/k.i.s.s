@@ -72,8 +72,8 @@ module.exports = {
         res.status(400).json()
       }
 
-    }catch{
-      res.status(400)
+    }catch (err){
+      res.status(500).json(err)
     }
   }
 
