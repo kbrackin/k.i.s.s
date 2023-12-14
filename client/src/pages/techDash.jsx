@@ -32,6 +32,7 @@ const ApiData = () => {
             key={item._id}
             issues={item.issues}
             resolved={item.issues.resolved}
+            issueId={item.issues._id}
           />
         ))}
       </ul>

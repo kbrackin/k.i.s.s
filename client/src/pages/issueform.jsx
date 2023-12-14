@@ -117,11 +117,11 @@ export default function Issue() {
               </Col>
 
               <Col className="text-center">
-                {/* <a href="/helpneeded"> */}
+                <a href="/helpneeded">
                 <Button variant="success" onClick={handleDB}>
                   No
                 </Button>
-                {/* </a> */}
+                </a>
               </Col>
             </Row>
           </div>
