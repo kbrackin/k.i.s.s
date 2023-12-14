@@ -1,24 +1,25 @@
 import { Col, Row, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import Auth from "../util/auth";
-import React, { useState } from "react";
+import { useState } from "react";
+import * as React from 'react'
 
 
 
 function RequestorList(props) {
   
   const [issueResolved, setIssueResolved] = useState({ resolved: false })
-  
-  const handleChange = (e, issueID, key) => {
+  const userID = props.userId
+  const handleChange = (e) => {
     const { checked } = e.target
     const resolved = issueResolved
-    console.log("IssueId", issueID, "value",checked)
+    console.log("IssueId", e.target.id, "value",checked)
 
     if (checked) {
       setIssueResolved({
         resolved: true
       });
-      axios.put(`/api/issue/${key}/${issueID}`, {
+      axios.put(`/api/issue/${userID}/${e.target.id}`, {
         resolved: true,
 
         headers: {
@@ -33,8 +34,8 @@ function RequestorList(props) {
           return error
         })
     } else {
-      axios.put(`/api/issue/${key}/${issueID}`, {
-        resolved: true,
+      axios.put(`/api/issue/${userID}/${e.target.id}`, {
+        resolved: false,
         headers: {
           Authorization: `Bearer ${Auth.getToken()}`,
         }
@@ -66,18 +67,19 @@ function RequestorList(props) {
             <tr>
               <Col>
                 {props.issues.map((issue) => (
-                  <div key={issue._id}>
+                  <div key={issue.id}>
                     <td id="tablecontent-left">Issue: {issue.issues}</td>
                     <td id="tablecontent">
-                      {" "}
+                      <label>{" "}
                       Is Resolved:{" "}
-                      <Form.Check // prettier-ignore
+                      <Form.Check
                         type="checkbox"
                         id={issue._id}
                         label=""
-                        value={issue.issues.resolved}
+                        
                         onChange={handleChange}
-                      />
+                        />
+                      </label>
 
                     </td>
                   </div>
